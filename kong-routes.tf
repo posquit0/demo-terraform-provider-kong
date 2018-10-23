@@ -62,7 +62,7 @@ resource "kong_route" "route-create-item" {
   service_id = "${kong_service.service-item.id}"
 }
 
-resource "kong_route" "route-list-item" {
+resource "kong_route" "route-list-items" {
   protocols = [ "http", "https" ]
   methods = [ "GET" ]
   hosts = [ "${var.api_gateway_host}" ]
