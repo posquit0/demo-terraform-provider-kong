@@ -1,5 +1,29 @@
+# Username and password protection
+resource "kong_plugin" "plugin-service-user-basic-auth" {
+  name = "basic-auth"
+  service_id = "${kong_service.service-user.id}"
+
+  config = {
+    # Permit anonymous access
+    anonymous = "${kong_consumer.consumer-anonymous.id}"
+    # Hide the client credential from the upstream service
+    hide_credentials = "true"
+  }
+}
+
+# Username and password protection
+resource "kong_plugin" "plugin-service-todo-basic-auth" {
+  name = "basic-auth"
+  service_id = "${kong_service.service-todo.id}"
+
+  config = {
+    # Hide the client credential from the upstream service
+    hide_credentials = "true"
+  }
+}
+
 # Rate limit how many HTTP requests a developer can make
-resource "kong_plugin" "plugin-auth-local-rate-limiting" {
+resource "kong_plugin" "plugin-route-auth-local-rate-limiting" {
   name = "rate-limiting"
   route_id = "${kong_route.route-auth-local.id}"
 
