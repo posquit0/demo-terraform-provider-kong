@@ -1,0 +1,22 @@
+### General Configurations {{{
+  company = "my-company"
+  organization = "platform"
+  environment = "dev"
+  project = "apigateway"
+### }}}
+
+### Backend Configurations {{{
+  backend_s3_region = "ap-northeast-2"
+### }}}
+
+### Kong Admin API Configurations {{{
+  admin_api_url = "Kong Admin API URL"
+  admin_username = "Username for Kong Admin API"
+  admin_password = "Password for Kong Admin API"
+  admin_api_key = "API Key for Kong Admin API"
+  tls_skip_verify = "Boolean to skip TLS verification on HTTPS"
+### }}}
+
+### API Gateway Configurations {{{
+  api_gateway_host = "Host for API Gateway"
+### }}}
