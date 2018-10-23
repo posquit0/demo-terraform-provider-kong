@@ -10,7 +10,7 @@ resource "kong_route" "route-register-user" {
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
+  preserve_host = false
   service_id = "${kong_service.service-user.id}"
 }
 
@@ -22,7 +22,7 @@ resource "kong_route" "route-show-me" {
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
+  preserve_host = false
   service_id = "${kong_service.service-user.id}"
 }
 
@@ -34,7 +34,7 @@ resource "kong_route" "route-logout-user" {
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
+  preserve_host = false
   service_id = "${kong_service.service-user.id}"
 }
 
@@ -46,7 +46,7 @@ resource "kong_route" "route-auth-local" {
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
+  preserve_host = false
   service_id = "${kong_service.service-user.id}"
 }
 

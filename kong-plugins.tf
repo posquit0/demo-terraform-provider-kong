@@ -1,9 +1,13 @@
-# resource "kong_plugin" "plugin-rate-limit" {
-#   name = "response-rate-limiting"
-#   config = {
-#     limits.sms.minute = 10
-#   }
-# }
+# Rate limit how many HTTP requests a developer can make
+resource "kong_plugin" "plugin-auth-local-rate-limiting" {
+  name = "rate-limiting"
+  route_id = "${kong_route.route-auth-local.id}"
+
+  config = {
+    minute = 10
+    limit_by = "ip"
+  }
+}
 
 # Correlate requests and responses using a unique ID transmitted over an HTTP header
 resource "kong_plugin" "plugin-global-correlation-id" {
