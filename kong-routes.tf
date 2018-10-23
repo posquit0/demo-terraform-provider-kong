@@ -50,64 +50,64 @@ resource "kong_route" "route-auth-local" {
   service_id = "${kong_service.service-user.id}"
 }
 
-resource "kong_route" "route-create-item" {
+resource "kong_route" "route-create-todo" {
   protocols = [ "http", "https" ]
   methods = [ "POST" ]
   hosts = [ "${var.api_gateway_host}" ]
-  paths = [ "/items$" ]
+  paths = [ "/todos$" ]
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
-  service_id = "${kong_service.service-item.id}"
+  preserve_host = false
+  service_id = "${kong_service.service-todo.id}"
 }
 
-resource "kong_route" "route-list-items" {
+resource "kong_route" "route-list-todos" {
   protocols = [ "http", "https" ]
   methods = [ "GET" ]
   hosts = [ "${var.api_gateway_host}" ]
-  paths = [ "/items$" ]
+  paths = [ "/todos$" ]
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
-  service_id = "${kong_service.service-item.id}"
+  preserve_host = false
+  service_id = "${kong_service.service-todo.id}"
 }
 
-resource "kong_route" "route-show-item" {
+resource "kong_route" "route-show-todo" {
   protocols = [ "http", "https" ]
   methods = [ "GET" ]
   hosts = [ "${var.api_gateway_host}" ]
-  paths = [ "/items/(?P<txid>${local.regex_uuid})$" ]
+  paths = [ "/todos/(?P<txid>${local.regex_uuid})$" ]
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
-  service_id = "${kong_service.service-item.id}"
+  preserve_host = false
+  service_id = "${kong_service.service-todo.id}"
 }
 
-resource "kong_route" "route-update-item" {
+resource "kong_route" "route-update-todo" {
   protocols = [ "http", "https" ]
   methods = [ "PATCH" ]
   hosts = [ "${var.api_gateway_host}" ]
-  paths = [ "/items/(?P<txid>${local.regex_uuid})$" ]
+  paths = [ "/todos/(?P<txid>${local.regex_uuid})$" ]
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
-  service_id = "${kong_service.service-item.id}"
+  preserve_host = false
+  service_id = "${kong_service.service-todo.id}"
 }
 
-resource "kong_route" "route-delete-item" {
+resource "kong_route" "route-delete-todo" {
   protocols = [ "http", "https" ]
   methods = [ "DELETE" ]
   hosts = [ "${var.api_gateway_host}" ]
-  paths = [ "/items/(?P<txid>${local.regex_uuid})$" ]
+  paths = [ "/todos/(?P<txid>${local.regex_uuid})$" ]
   # Strip the matching prefix from the upstream request URL
   strip_path = false
   # Use the request Host header in the upstream request headers
-  preserve_host = true
-  service_id = "${kong_service.service-item.id}"
+  preserve_host = false
+  service_id = "${kong_service.service-todo.id}"
 }
 
 # 404 Not Found

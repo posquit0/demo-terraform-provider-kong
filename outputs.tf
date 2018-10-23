@@ -10,11 +10,11 @@ output "services" {
     )}",
     "${format(
       "%-24s (%s://%s:%s%s)",
-      kong_service.service-item.name,
-      kong_service.service-item.protocol,
-      kong_service.service-item.host,
-      kong_service.service-item.port,
-      kong_service.service-item.path
+      kong_service.service-todo.name,
+      kong_service.service-todo.protocol,
+      kong_service.service-todo.host,
+      kong_service.service-todo.port,
+      kong_service.service-todo.path
     )}"
   ]
 }
@@ -43,28 +43,28 @@ output "routes" {
     )}",
     "${formatlist(
       "%-8s  %s",
-      kong_route.route-create-item.methods,
-      kong_route.route-create-item.paths.0
+      kong_route.route-create-todo.methods,
+      kong_route.route-create-todo.paths.0
     )}",
     "${formatlist(
       "%-8s  %s",
-      kong_route.route-list-items.methods,
-      kong_route.route-list-items.paths.0
+      kong_route.route-list-todos.methods,
+      kong_route.route-list-todos.paths.0
     )}",
     "${formatlist(
       "%-8s  %s",
-      kong_route.route-show-item.methods,
-      kong_route.route-show-item.paths.0
+      kong_route.route-show-todo.methods,
+      kong_route.route-show-todo.paths.0
     )}",
     "${formatlist(
       "%-8s  %s",
-      kong_route.route-update-item.methods,
-      kong_route.route-update-item.paths.0
+      kong_route.route-update-todo.methods,
+      kong_route.route-update-todo.paths.0
     )}",
     "${formatlist(
       "%-8s  %s",
-      kong_route.route-delete-item.methods,
-      kong_route.route-delete-item.paths.0
+      kong_route.route-delete-todo.methods,
+      kong_route.route-delete-todo.paths.0
     )}"
   ]
 }

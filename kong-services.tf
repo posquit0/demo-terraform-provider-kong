@@ -3,19 +3,19 @@ resource "kong_service" "service-user" {
   protocol = "http"
   host = "mockbin.com"
   port = 80
-  path = "/request"
+  path = "/requests"
   retries = 5
   connect_timeout = "${10 * 1000}"
   write_timeout = "${5 * 1000}"
   read_timeout = "${5 * 1000}"
 }
 
-resource "kong_service" "service-item" {
-  name = "item-service"
+resource "kong_service" "service-todo" {
+  name = "todo-service"
   protocol = "http"
-  host = "mockbin.com"
+  host = "jsonplaceholder.typicode.com"
   port = 80
-  path = "/request"
+  path = "/"
   retries = 5
   connect_timeout = "${10 * 1000}"
   write_timeout = "${5 * 1000}"
@@ -25,9 +25,9 @@ resource "kong_service" "service-item" {
 resource "kong_service" "service-fallback" {
   name = "fallback-service"
   protocol = "http"
-  host = "mockbin.com"
-  port = 80
-  path = "/request"
+  host = "localhost"
+  port = 8001
+  path = "/unknown-endpoint"
   retries = 5
   connect_timeout = "${10 * 1000}"
   write_timeout = "${5 * 1000}"
